@@ -27,7 +27,8 @@ document.addEventListener('mouseup', function() {
 
 $('document').ready(function() {
 
-    var a = document.querySelectorAll('a')
+    var a = document.querySelectorAll('a');
+    var change = document.querySelectorAll('.change');
 
 
     a.forEach(item => {
@@ -41,4 +42,26 @@ $('document').ready(function() {
         });
     })
 
+    change.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
+            cursorinner.classList.add('cursorinnerhide')
+        });
+        item.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+            cursorinner.classList.remove('cursorinnerhide')
+        });
+    })
+})
+
+
+$('document').ready(function() {
+    let next = document.querySelector('#next'),
+        Models = document.querySelector('#models');
+    console.log(Models);
+
+    next.addEventListener('click', function() {
+        Models.scrollIntoView();
+        var MovePlane = true;
+    });
 })

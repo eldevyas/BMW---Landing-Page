@@ -8,25 +8,25 @@ import * as dat from 'https://cdn.skypack.dev/dat.gui';
 
 // Main Settings
 const settings = {
-  xThreshold: 20,
-  yThreshold: 35,
-  originalImagePath: 'https://assets.codepen.io/122136/dog-photo.jpg',
-  depthImagePath: 'https://assets.codepen.io/122136/dog-depth-map.jpg',
+    xThreshold: 20,
+    yThreshold: 35,
+    originalImagePath: 'https://assets.codepen.io/122136/dog-photo.jpg',
+    depthImagePath: 'https://assets.codepen.io/122136/dog-depth-map.jpg',
 }
 
 // Sizes
 const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight
+    width: window.innerWidth,
+    height: window.innerHeight
 }
 
 // Image Details
 let originalImage = null
 let depthImage = null
 const originalImageDetails = {
-  width: 0,
-  height: 0,
-  aspectRatio: 0,
+    width: 0,
+    height: 0,
+    aspectRatio: 0,
 }
 
 // Geometries and Material
@@ -36,10 +36,10 @@ let plane = null
 
 // Cursor Settings
 const cursor = {
-  x: 0,
-  y: 0,
-  lerpX: 0,
-  lerpY: 0,
+    x: 0,
+    y: 0,
+    lerpX: 0,
+    lerpY: 0,
 }
 
 
@@ -70,29 +70,28 @@ let fovY = camera.position.z * camera.getFilmHeight() / camera.getFocalLength();
 
 
 /**
-* Images
-*/
+ * Images
+ */
 
 const textureLoader = new THREE.TextureLoader()
 
 const loadImages = () => {
 
-  if(originalImage !== null || depthImage !== null)
-  {
-    originalImage.dispose()
-    depthImage.dispose()
-  }
-  depthImage = textureLoader.load('src/img/bmw_depth.png')
+    if (originalImage !== null || depthImage !== null) {
+        originalImage.dispose()
+        depthImage.dispose()
+    }
+    depthImage = textureLoader.load('src/img/bmw_depth.png')
 
-  originalImage = textureLoader.load( 'src/img/bmw.jpg', function ( tex ) {
-    originalImageDetails.width = tex.image.width;
-    originalImageDetails.height = tex.image.height;
-    originalImageDetails.aspectRatio = tex.image.height / tex.image.width;
+    originalImage = textureLoader.load('src/img/bmw.jpg', function(tex) {
+        originalImageDetails.width = tex.image.width;
+        originalImageDetails.height = tex.image.height;
+        originalImageDetails.aspectRatio = tex.image.height / tex.image.width;
 
-    create3dImage();
-    resize();
-  } );
-  
+        create3dImage();
+        resize();
+    });
+
 }
 
 loadImages()
@@ -103,25 +102,24 @@ loadImages()
  */
 
 const create3dImage = () => {
-  
-  // Cleanup Geometry for GUI
-  if(plane !== null)
-  {
-      planeGeometry.dispose()
-      planeMaterial.dispose()
-      scene.remove(plane)
-  }
 
-  planeGeometry = new THREE.PlaneBufferGeometry(1, 1);
+    // Cleanup Geometry for GUI
+    if (plane !== null) {
+        planeGeometry.dispose()
+        planeMaterial.dispose()
+        scene.remove(plane)
+    }
 
-  planeMaterial = new THREE.ShaderMaterial({
-    uniforms: {
-      originalTexture: { value: originalImage },
-      depthTexture: { value: depthImage },
-      uMouse: { value: new THREE.Vector2(0, 0) },
-      uThreshold: { value: new THREE.Vector2(10, 10) },
-    },
-    fragmentShader: `
+    planeGeometry = new THREE.PlaneBufferGeometry(1, 1);
+
+    planeMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+            originalTexture: { value: originalImage },
+            depthTexture: { value: depthImage },
+            uMouse: { value: new THREE.Vector2(0, 0) },
+            uThreshold: { value: new THREE.Vector2(10, 10) },
+        },
+        fragmentShader: `
       precision mediump float;
       uniform sampler2D originalTexture; 
       uniform sampler2D depthTexture; 
@@ -142,7 +140,7 @@ const create3dImage = () => {
         gl_FragColor = texture2D(originalTexture,mirrored(fake3d));
       }
     `,
-    vertexShader: `
+        vertexShader: `
       varying vec2 vUv; 
 
       void main() {
@@ -152,11 +150,11 @@ const create3dImage = () => {
         gl_Position = projectionMatrix * modelViewPosition; 
       }
     `
-  });
+    });
 
-  plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    
-  scene.add(plane);
+    plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+    scene.add(plane);
 }
 create3dImage();
 
@@ -168,29 +166,28 @@ create3dImage();
 
 const resize = () => {
 
-  // Update sizes
-  sizes.width = window.innerWidth
-  sizes.height = window.innerHeight
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
 
-  // Update camera
-  camera.aspect = sizes.width / sizes.height
-  camera.updateProjectionMatrix()
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
 
-  // Update Image Size
-  if(sizes.height/sizes.width < originalImageDetails.aspectRatio) {
-    plane.scale.set( (fovY * camera.aspect), ((sizes.width / sizes.height) * originalImageDetails.aspectRatio), 1 );
-  } else {
-    plane.scale.set( (fovY / originalImageDetails.aspectRatio), fovY, 1 );
-  }
+    // Update Image Size
+    if (sizes.height / sizes.width < originalImageDetails.aspectRatio) {
+        plane.scale.set((fovY * camera.aspect), ((sizes.width / sizes.height) * originalImageDetails.aspectRatio), 1);
+    } else {
+        plane.scale.set((fovY / originalImageDetails.aspectRatio), fovY, 1);
+    }
 
-  // Update renderer
-  renderer.setSize(sizes.width, sizes.height)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 }
 
-window.addEventListener('resize', () =>
-{
-  resize()
+window.addEventListener('resize', () => {
+    resize()
 })
 
 
@@ -198,28 +195,24 @@ window.addEventListener('resize', () =>
  * Cursor
  */
 
-document.addEventListener('mousemove', (event) =>
-{
-  cursor.x = event.clientX / sizes.width - 0.5
-  cursor.y = event.clientY / sizes.height - 0.5
+document.addEventListener('mousemove', (event) => {
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = event.clientY / sizes.height - 0.5
 })
 
-document.addEventListener('mouseout', (event) =>
-{
-  cursor.x = 0
-  cursor.y = 0
+document.addEventListener('mouseout', (event) => {
+    cursor.x = 0
+    cursor.y = 0
 })
-document.addEventListener('touchmove', (event) =>
-{
-  const touch = event.touches[0];
-  cursor.x = touch.pageX / sizes.width - 0.5;
-  cursor.y = touch.pageY / sizes.height - 0.5;
+document.addEventListener('touchmove', (event) => {
+    const touch = event.touches[0];
+    cursor.x = touch.pageX / sizes.width - 0.5;
+    cursor.y = touch.pageY / sizes.height - 0.5;
 })
 
-document.addEventListener('touchend', (event) =>
-{
-  cursor.x = 0
-  cursor.y = 0
+document.addEventListener('touchend', (event) => {
+    cursor.x = 0
+    cursor.y = 0
 })
 
 
@@ -228,7 +221,7 @@ document.addEventListener('touchend', (event) =>
  */
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: canvas
+    canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -241,28 +234,29 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 const clock = new THREE.Clock()
 let previousTime = 0
 
-const tick = () =>
-{
-  const elapsedTime = clock.getElapsedTime()
-  const deltaTime = elapsedTime - previousTime
-  previousTime = elapsedTime
 
-  // Set Cursor Variables
-  const parallaxX = cursor.x * 1
-  const parallaxY = - cursor.y * 1
 
-  cursor.lerpX  += (parallaxX - cursor.lerpX ) * 5 * deltaTime;
-  cursor.lerpY += (parallaxY - cursor.lerpY) * 5 * deltaTime;
 
-  // Mouse Positioning Uniform Values
-  planeMaterial.uniforms.uMouse.value = new THREE.Vector2(cursor.lerpX , cursor.lerpY)
+const tick = () => {
+    const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
 
-  // Render
-  renderer.render(scene, camera)
+    // Set Cursor Variables
+    const parallaxX = cursor.x * 1
+    const parallaxY = -cursor.y * 1
 
-  // Call tick again on the next frame
-  window.requestAnimationFrame(tick)
+    cursor.lerpX += (parallaxX - cursor.lerpX) * 5 * deltaTime;
+    cursor.lerpY += (parallaxY - cursor.lerpY) * 5 * deltaTime;
+
+    // Mouse Positioning Uniform Values
+    planeMaterial.uniforms.uMouse.value = new THREE.Vector2(cursor.lerpX, cursor.lerpY)
+
+    // Render
+    renderer.render(scene, camera)
+
+    // Call tick again on the next frame
+    window.requestAnimationFrame(tick)
 }
 
 tick();
-
