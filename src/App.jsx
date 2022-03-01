@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import './App.css'
-import './fonts.css'
+import './css/App.css'
+import './css/fonts.css'
 
 
 
@@ -28,8 +28,8 @@ function Header() {
 
           <canvas id="canvas"></canvas>
 
-          <div className="content">
-            <h1>More <span>Drive</span>, More emotion, this is new</h1>
+          <div className="content" >
+            <h1 className="Dimensional" id="Dimensional">More <span>Drive</span>, More emotion, this is new</h1>
             <p>Concept by Yassine C.</p>
           </div>
 
@@ -48,6 +48,14 @@ function Header() {
         </div>
 
         <div className= "models child" id="models">
+            <div className= "article">
+                <div className= "left">
+
+                </div>
+
+                <div className= "right">
+                </div>
+            </div>
             <div className="bottom">
             <div className= "next change" id='back'>
                 <p><a>Back</a></p>

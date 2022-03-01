@@ -22,6 +22,14 @@ body {
 
 canvas {
     position: fixed !important;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/bmw.jpg');
+    background-size: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-position: center;
 }
 
 
@@ -91,18 +99,6 @@ canvas {
     scroll-snap-align: start;
     min-height: 100%;
     min-width: 100%;
-}
-
-canvas {
-    width: 100%;
-    height: 100vh;
-    background-image: url('img/bmw.jpg');
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-position: center;
 }
 
 .main {
@@ -371,4 +367,27 @@ canvas {
 .next:hover::before {
     width: 100%;
     color: #000;
+}
+
+.article {
+    width: 80%;
+    height: 60%;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(30%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left,
+.right {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+}
+
+.Dimensional {
+    transform: perspective(10) skew(30px, 0);
 }
