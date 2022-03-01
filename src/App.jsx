@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import './fonts.css'
+
 
 function Header() {
   const [count, setCount] = useState(0)
 
   return (
-      <div class="scrollwrapper" id="">
+      <div class="scrollwrapper" id="Wrapper">
         <div class= "main child">
           <div class="header">
             <img src= "src/img/logo.png"></img>
@@ -30,7 +32,7 @@ function Header() {
           </div>
 
           <div class= "next" id='next'>
-            <i class= "material-icons">navigate_next</i>
+            <p>Enter</p>
           </div>
         </div>
 
@@ -39,7 +41,7 @@ function Header() {
         </div>
       </div>
   )
-}
+};
 
 export default Header
 
