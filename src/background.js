@@ -1,6 +1,10 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.129.0";
+import * as THREE from "three";
 import * as dat from 'https://cdn.skypack.dev/dat.gui';
-
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
 
 /**
  * Variables
@@ -235,6 +239,7 @@ const clock = new THREE.Clock()
 let previousTime = 0
 
 
+const composer = new EffectComposer(renderer);
 
 
 const tick = () => {
@@ -254,6 +259,9 @@ const tick = () => {
 
     // Render
     renderer.render(scene, camera)
+
+    composer.render();
+
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)

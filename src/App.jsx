@@ -10,7 +10,7 @@ function Header() {
   
   return (
       <div className="scrollwrapper" id="Wrapper">
-        <div className= "main child">
+        <div className= "main child" id= "home">
           <div className="header">
             <img src= "src/img/logo.png" className="change"></img>
             <div className= "navigation">

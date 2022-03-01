@@ -57,11 +57,15 @@ $('document').ready(function() {
 
 $('document').ready(function() {
     let next = document.querySelector('#next'),
+        back = document.querySelector('#back'),
+        Home = document.querySelector('#home'),
         Models = document.querySelector('#models');
-    console.log(Models);
 
     next.addEventListener('click', function() {
         Models.scrollIntoView();
-        var MovePlane = true;
+    });
+
+    back.addEventListener('click', function() {
+        Home.scrollIntoView();
     });
 })
