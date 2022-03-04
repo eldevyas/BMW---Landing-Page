@@ -1,0 +1,63 @@
+/* -- NAVIGATION -- */
+
+.navigation {
+    padding: 0 !important;
+    margin: 0 !important;
+    position: fixed !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 90;
+    backdrop-filter: blur(0px);
+    -webkit-filter: url("#blur");
+    filter: url("./../index.html#blur");
+}
+
+.navigation .nav {
+    height: 50%;
+    background-color: rgba(255, 255, 255, .0);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 500px;
+}
+
+.nav::-webkit-scrollbar {
+    appearance: none;
+}
+
+.navigation .nav a {
+    text-decoration: none;
+    margin: 0 50px;
+    font-size: 80px;
+    width: 500% !important;
+    color: #fff;
+    font-weight: 100;
+    transition: all 0.3s ease-in-out;
+    padding: 0 0px;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    text-align: center;
+    padding: 0 100px;
+}
+
+.navigation .nav a:hover {
+    font-size: 150px;
+    font-weight: 900;
+    padding: 0 200px;
+}
+
+.navigation .nav a:active {
+    font-size: 120px;
+    font-weight: 900;
+    padding: 0 200px;
+}

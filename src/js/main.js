@@ -72,15 +72,11 @@ $('document').ready(function() {
 
 
 
-//3D TITLE
+//MOTION BLUR
 
+var filters = document.querySelector(".filters"), // the SVG that contains the filters
+	defs = filters.querySelector("defs"), // the <defs> element inside the SVG
+	blur = defs.querySelector("#blur"), // the blur filter
+	blurFilter = blur.firstElementChild; // the feGaussianBlur primitive
 
-
-
-$('document').ready(function() {
-    $('.Dimensional').mousemove(function(e) {
-        var x = -e.clientX / 100;
-        var y = -e.clientY / 100;
-        $(".Dimensional").css('transform', `skew(${x}deg , ${y}deg)`);
-    });
-});
+blurFilter.setAttribute("stdDeviation","12,0");

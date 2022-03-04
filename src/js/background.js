@@ -1,10 +1,9 @@
 import * as THREE from "three";
 import * as dat from 'https://cdn.skypack.dev/dat.gui';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
+import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
 /**
  * Variables
@@ -121,7 +120,7 @@ const create3dImage = () => {
             originalTexture: { value: originalImage },
             depthTexture: { value: depthImage },
             uMouse: { value: new THREE.Vector2(0, 0) },
-            uThreshold: { value: new THREE.Vector2(10, 10) },
+            uThreshold: { value: new THREE.Vector2(20, 20) },
         },
         fragmentShader: `
       precision mediump float;
@@ -240,6 +239,9 @@ let previousTime = 0
 
 
 const composer = new EffectComposer(renderer);
+
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new EffectPass(camera, new BloomEffect()));
 
 
 const tick = () => {
