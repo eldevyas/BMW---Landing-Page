@@ -13,7 +13,7 @@
     justify-self: center;
     align-self: center;
     position: fixed;
-    z-index: 100;
+    z-index: 1000;
     transition: all 0.3s ease-in-out;
 }
 
@@ -68,7 +68,7 @@
     border: 1px solid #fff;
     position: absolute;
     transition: all 0.3s ease-in-out;
-    z-index: 10
+    z-index: 1001;
 }
 
 .nav-toggle:hover::after {

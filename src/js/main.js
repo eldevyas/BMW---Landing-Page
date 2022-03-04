@@ -72,11 +72,17 @@ $('document').ready(function() {
 
 
 
-//MOTION BLUR
+//Navigation
 
-var filters = document.querySelector(".filters"), // the SVG that contains the filters
-	defs = filters.querySelector("defs"), // the <defs> element inside the SVG
-	blur = defs.querySelector("#blur"), // the blur filter
-	blurFilter = blur.firstElementChild; // the feGaussianBlur primitive
 
-blurFilter.setAttribute("stdDeviation","12,0");
+$('document').ready(function() {
+    let Switch = document.querySelector('#Switch'),
+        Navigate = document.querySelector('.navigation'),
+        Nav = Navigate.querySelector('.nav'),
+        Link = Nav.querySelectorAll('a');
+    console.log(Switch)
+    console.log(Link);
+
+})
+
+

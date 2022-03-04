@@ -16,6 +16,7 @@ function Page() {
           <Header/>
           <Navigation/>
           <canvas id="canvas"></canvas>
+          <div id= "fade"></div>
 
           <div className="content" >
             <h1 className="Dimensional" id="Dimensional">More <span>Drive</span>, More emotion, this is new</h1>
