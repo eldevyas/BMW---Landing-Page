@@ -1,0 +1,237 @@
+/*--------------- HEADER ---------------*/
+
+
+.header {
+    width: 80%;
+    height: 50px;
+    padding: 0px 25px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-self: center;
+    align-self: center;
+    position: fixed;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+
+    img{
+
+        &:hover {
+            box-shadow: 0px 0px 50px #fff;
+            transform: scale(1.1);
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 50px #fff;
+            transform: scale(1.1);
+        }
+
+        &:active {
+            box-shadow: 0px 0px 50px rgba(0, 80, 255, 0.5);
+            transform: scale(1);
+        }
+    }
+}
+
+
+
+
+
+
+/*--------------- OPEN STATE ---------------*/
+
+
+.open {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+        content: "OPEN MENU";
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: -200%;
+        font-size: 10px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        animation: PULLBOTTOM 0.3s forwards;
+    }
+
+    &:hover::before {
+        animation: PUSHTOP 0.3s forwards;
+    }
+
+    @keyframes PUSHTOP {
+        0%{
+            opacity: 0;
+            transform: translateY(-50%);
+        }
+        100%{
+            
+        }
+    }
+
+    @keyframes PULLBOTTOM{
+        0%{
+            opacity: 1;
+            transform: translateY(0%);
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(-50%);
+        }
+    }
+    
+
+    &::after {
+        content: "";
+        width: 0%;
+        height: 0%;
+        opacity: 0;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        z-index: 1001;
+    }
+
+    &:hover::after {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+
+    div {
+        position: relative;
+        width: 5px;
+        height: 5px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover div {
+        margin: 0;
+        width: 3px;
+        height: 3px;
+        position: absolute;
+    }
+}
+
+
+/*--------------- CLOSE STATE ---------------*/
+
+.close {
+    position: relative;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+        content: "";
+        width: 0%;
+        height: 0%;
+        opacity: 0;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        z-index: 1001;
+    }
+
+    
+    
+
+    &:hover::after {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+
+    div{
+        display: none;
+        width: 1px;
+        height: 20px;
+        background-color: #fff;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+
+        &:first-child{
+            display: flex;
+            margin: 0 auto;
+            transform: rotate(45deg);
+            transition: all 0.3s ease-in-out;
+
+            }
+    
+        &:last-child{
+            display: flex;
+            margin: 0 auto;
+            transform: rotate(-45deg);
+            transition: all 0.3s ease-in-out;
+
+        }
+    
+    }
+
+    &::before {
+        content: "CLOSE MENU";
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: -200%;
+        font-size: 10px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out 300ms;
+        animation: PULLTOP 0.3s forwards;
+    }
+
+    &:hover::before {
+        animation: PUSHBOTTOM 0.3s forwards;
+    }
+
+    @keyframes PUSHBOTTOM{
+        0%{
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+    @keyframes PULLTOP{
+        0%{
+            opacity: 1;
+            transform: translateY(0%);
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(50%);
+        }
+    }
+    
+}
+

@@ -76,13 +76,55 @@ $('document').ready(function() {
 
 
 $('document').ready(function() {
+    scroll();
+
     let Switch = document.querySelector('#Switch'),
         Navigate = document.querySelector('.navigation'),
+        Fade = document.querySelector('#fade')
         Nav = Navigate.querySelector('.nav'),
+        Visible = false;
         Link = Nav.querySelectorAll('a');
     console.log(Switch)
     console.log(Link);
 
+    Switch.onclick = () => {
+        if(Visible == true){
+            Visible = false;
+            Fade.style.opacity = 0;
+            Fade.style.visibility = "hidden";
+            Navigate.style.transform = "translateX(-200vw)";
+            Switch.classList.remove('close');
+            Switch.classList.add('open');
+        }
+        else if(Visible == false){
+            Visible = true;
+            Fade.style.opacity = 1;
+            Fade.style.visibility = "visible";
+            Navigate.style.transform = 'translateX(0vw)';
+            Switch.classList.remove('open');
+            Switch.classList.add('close');
+        }
+    }
+
 })
 
+
+function scroll() {
+    container = document.querySelector('.scrollwrapper')
+    function scrollHorizontally(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        container.scrollLeft -= (delta*40); // Multiplied by 40
+        container.scrollLeft -= (delta*40); // Multiplied by 40
+    }
+    if (window.addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        window.addEventListener("mousewheel", scrollHorizontally, false);
+        // Firefox
+        window.addEventListener("DOMMouseScroll", scrollHorizontally, false);
+    } else {
+        // IE 6/7/8
+        window.attachEvent("onmousewheel", scrollHorizontally);
+    }
+};
 

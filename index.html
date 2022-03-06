@@ -7,18 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMW - M3 E92</title>
+    <link rel="stylesheet" href="src/dist/loader.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <script src="https://www.motionblurjs.com/blur.js"></script>
 </head>
 
 <body>
+    <div class="loader">
+        <div class="wrap"><div class="loading"></div><h1 id="percent">0%</h1></div>
+        <div class="text">
+            <h1 id="loading-text">We are loading your experience...</h1>
+            <div id="progressBar"><div id="progress"></div></div>
+        </div>
+        
+    </div>
+
+    <script src="/src/js/loader.js"></script>
     <div id="root"></div>
     <div class="cursor"></div>
     <div class="cursor2"></div>
-    <script type="module" src="src/main.jsx"></script>
-    <script src="src/js/background.js" type="module"></script>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="/src/js/background.js" type="module"></script>
+    <script src="/src/js/script.js"></script>
 </body>
-<script src="src/js/main.js"></script>
 
 </html>

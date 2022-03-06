@@ -1,0 +1,49 @@
+/*------------ CURSOR EFFECTS ------------*/
+
+.cursor {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 1px dashed #fff;
+    transition: all 200ms ease-out;
+    position: fixed;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    transform: translate(calc(-50% + 15px), -50%);
+    z-index: 999999999;
+    mix-blend-mode: difference;
+}
+
+.cursor2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
+    opacity: 1;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width .3s, height .3s, opacity .3s;
+    z-index: 999999999;
+}
+
+/*------------ CURSOR ON HOVER ------------*/
+
+.hover {
+    background-color: rgba(0, 100, 255, 1);
+    opacity: 0.1;
+    mix-blend-mode: normal;
+}
+
+.cursorinnerhover {
+    width: 50px;
+    height: 50px;
+}
+
+.cursorinnerhide {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}

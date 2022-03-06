@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import './css/App.css'
-import './css/Header.css'
-import './css/fonts.css'
+import './dist/index.css'
 import Header from './public/Header'
 import Navigation from './public/Navigation'
 
@@ -9,7 +7,7 @@ import Navigation from './public/Navigation'
 function Page() {
   const [count, setCount] = useState(0)
 
-  
+
   return (
       <div className="scrollwrapper" id="Wrapper">
         <div className= "main child" id= "home">
@@ -42,12 +40,12 @@ function Page() {
                 <div className= "left">
                   <div className= "up">
                     <div>
-                      <div className= "icon"></div>
+                      <div className= "icon"><img src="src/img/engine.png"></img></div>
                       <h1>Engine</h1>
                       <h2>548hp</h2>
                     </div>
                     <div>
-                      <div className= "icon"></div>
+                      <div className= "icon"><img src="src/img/torque.png"></img></div>
                       <h1>Torque</h1>
                       <h2>450nm</h2>
                   </div>
@@ -55,12 +53,12 @@ function Page() {
                   
                   <div className= "down">
                     <div>
-                      <div className= "icon"></div>
+                      <div className= "icon"><img src="src/img/weight.png"></img></div>
                       <h1>Weight</h1>
                       <h2>1850kg</h2>
                     </div>
                     <div>
-                      <div className= "icon"></div>
+                      <div className= "icon"><img src="src/img/speed.png"></img></div>
                       <h1>0 - 60MPH</h1>
                       <h2>3.8secs</h2>
                     </div>
