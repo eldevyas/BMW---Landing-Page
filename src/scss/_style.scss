@@ -1,5 +1,6 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 
+
 /*------------ Main Page ------------*/
 
 .scrollwrapper {
@@ -81,12 +82,6 @@
     text-shadow: 0px 0px 60px #fff;
 }
 
-.models {
-    scroll-snap-align: start;
-    background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(100px) brightness(1) saturate(1);
-}
-
 .next {
     position: relative;
     background-color: rgba(255, 255, 255, 0);
@@ -158,6 +153,11 @@
 
 /*------------ Second Page ------------*/
 
+.models {
+    scroll-snap-align: start;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(100px) brightness(0.5) saturate(0);
+}
 
 .article {
     width: 80%;
@@ -219,7 +219,7 @@
 }
 
 .up div img,
-.down div img{
+.down div img {
     width: 70px;
     height: auto;
     overflow: hidden;
@@ -240,4 +240,3 @@
     overflow: hidden;
     border-radius: 10px;
 }
-
