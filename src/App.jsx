@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './dist/index.css'
 import Header from './public/Header'
 import Navigation from './public/Navigation'
+import { Player } from 'video-react';
 
 
 function Page() {
@@ -66,7 +67,11 @@ function Page() {
                 </div>
 
                 <div className= "right">
-                  <img className= "article-img" src= "src/img/m3.jpeg"></img>
+                  <Player
+                    playsInline
+                    poster="/assets/poster.png"
+                    src="src/vid/bmw-m3.mp4"
+                  />
                 </div>
             </div>
             <div className="bottom">

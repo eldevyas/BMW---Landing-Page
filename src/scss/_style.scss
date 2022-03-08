@@ -1,6 +1,5 @@
-/* Hide scrollbar for Chrome, Safari and Opera */
 
-
+@import "~video-react/styles/scss/video-react";
 /*------------ Main Page ------------*/
 
 .scrollwrapper {
@@ -232,11 +231,4 @@
     font-weight: 100;
 }
 
-.article-img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    overflow: hidden;
-    border-radius: 10px;
-}
+
